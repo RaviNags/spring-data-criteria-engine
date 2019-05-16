@@ -1,0 +1,12 @@
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/SearchResultJson.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/RequestTypeEnum.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/repo/AbstractSearchRepository.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/Sort.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/PredicateFactory.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/GroupedFilter.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/OperationEnum.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/Filter.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/ForeignFilter.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/Search.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/service/AbstractSearchService.java
+/Users/Ravi/eclipse-workspace/search-engine/src/main/java/com/nags/searchengine/model/Pagination.java
