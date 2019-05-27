@@ -27,7 +27,10 @@ public class Filter {
     super();
     this.column = column;
     this.operator = operateur;
-    this.values = new ArrayList<>(Arrays.asList(operande));
+    if (operande instanceof List)
+      this.values = (ArrayList<Object>) operande;
+    else
+      this.values = new ArrayList<>(Arrays.asList(operande));
   }
 
   public String getColumn() {

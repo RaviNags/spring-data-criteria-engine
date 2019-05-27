@@ -80,9 +80,9 @@ public class PredicateFactory {
           result = criteriaBuilder.between(path, val1, val2);
           break;
         case IN:
-          ArrayList<Integer> vals = new ArrayList<Integer>(filter.getValues().size());
+          ArrayList<Long> vals = new ArrayList<Long>(filter.getValues().size());
           for (Object op : filter.getValues()) {
-            vals.add((Integer) (op));
+            vals.add((Long) (op));
           }
           result = path.in(vals);
           break;
