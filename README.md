@@ -31,7 +31,7 @@ public class UserSearchRepository extends AbstractSearchRepository<User> {
   @SuppressWarnings("rawtypes")
   @Override
   protected Class getEntityClass() {
-    return EpTask.class.getClass();
+    return User.class.getClass();
   }
 
   @Override
