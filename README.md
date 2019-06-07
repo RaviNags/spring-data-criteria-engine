@@ -4,7 +4,7 @@ This project has to purpose to do quick search or filters with pagination on you
 
 # How to use with a example ?
 
-two table : Enterprise 1 ------ * User
+We have two table in our use case : Enterprise 1 ------ * User
 
 | User |
 | ------ |
@@ -19,3 +19,8 @@ two table : Enterprise 1 ------ * User
 | name (string) |
 | number (string) |
 
+Your need is to request dynamicly your user table to do a search function with pagination.
+
+### 1 - Create a search repository with the User entity:
+
+### 2 - Create a search service with the User entity:
