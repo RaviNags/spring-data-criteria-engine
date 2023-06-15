@@ -1,19 +1,15 @@
 package com.nags.searchengine.model;
 
+import lombok.Value;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Value
 public class ForeignFilter {
 
-  private String tableName;
-
-  private String parentTableName;
-
-  private List<Filter> filters;
-
-  public ForeignFilter() {
-    this.filters = new ArrayList<>();
-  }
+  String tableName;
+  String parentTableName;
+  List<Filter> filters;
 
   public ForeignFilter(String parent, String table) {
     this.parentTableName = parent;
@@ -27,36 +23,4 @@ public class ForeignFilter {
     this.filters = new ArrayList<>();
     this.filters.add(filter);
   }
-
-  public String getTableName() {
-    return tableName;
-  }
-
-  public void setTableName(String tableName) {
-    this.tableName = tableName;
-  }
-
-  public String getParentTableName() {
-    return parentTableName;
-  }
-
-  public void setParentTableName(String parentTableName) {
-    this.parentTableName = parentTableName;
-  }
-
-  public List<Filter> getFilters() {
-    return filters;
-  }
-
-  public void setFilters(List<Filter> filters) {
-    this.filters = filters;
-  }
-
-  // @Override
-  // public String toString ()
-  // {
-  // return "{tableName : " + tableName + ", parentTableName : " + parentTableName
-  // + ", filters : " + filters + "}";
-  // }
-
 }

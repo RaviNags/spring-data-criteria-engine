@@ -7,9 +7,7 @@ import com.fasterxml.jackson.annotation.JsonUnwrapped;
 public class SearchResultJson<T> {
 
   private Search search;
-
   private List<T> data = new ArrayList<>();
-
   public SearchResultJson() {
     super();
   }

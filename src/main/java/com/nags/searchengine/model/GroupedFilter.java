@@ -1,22 +1,28 @@
 package com.nags.searchengine.model;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Data
 public class GroupedFilter {
-  private RequestTypeEnum requestType = RequestTypeEnum.AND;
+  private RequestTypeEnum requestType;
 
   private List<Filter> filters = new ArrayList<>();
 
   private List<ForeignFilter> foreignFilters = new ArrayList<>();
 
   public GroupedFilter() {
-    super();
+    this.filters = new ArrayList<>();
+    this.foreignFilters = new ArrayList<>();
+    this.requestType = RequestTypeEnum.AND;
   }
 
   public GroupedFilter(RequestTypeEnum requestType) {
-    super();
+    this.filters = new ArrayList<>();
+    this.foreignFilters = new ArrayList<>();
     this.requestType = requestType;
   }
 
@@ -32,30 +38,6 @@ public class GroupedFilter {
       opt.get().getFilters().add(filter);
     else
       this.foreignFilters.add(new ForeignFilter(parent, table, filter));
-  }
-
-  public RequestTypeEnum getRequestType() {
-    return requestType;
-  }
-
-  public void setRequestType(RequestTypeEnum requestType) {
-    this.requestType = requestType;
-  }
-
-  public List<ForeignFilter> getForeignFilters() {
-    return foreignFilters;
-  }
-
-  public void setForeignFilters(List<ForeignFilter> foreignFilters) {
-    this.foreignFilters = foreignFilters;
-  }
-
-  public List<Filter> getFilters() {
-    return filters;
-  }
-
-  public void setFilters(List<Filter> filters) {
-    this.filters = filters;
   }
 
   @Override
