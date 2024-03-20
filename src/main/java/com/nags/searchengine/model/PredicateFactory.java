@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PredicateFactory {
     protected PredicateGenerator integerGenerator = new IntegerPredicateGenerator();
-    protected PredicateGenerator dateGenerator = new InstantPredicateGenerator();
+    protected PredicateGenerator instantGenerator = new InstantPredicateGenerator();
     protected PredicateGenerator stringGenerator = new StringPredicateGenerator();
     protected PredicateGenerator booleanGenerator = new BooleanPredicateGenerator();
     protected PredicateGenerator characterGenerator = new CharacterPredicateGenerator();
@@ -27,9 +27,8 @@ public class PredicateFactory {
         Class entityClass = path.getJavaType();
         if (Integer.class.isAssignableFrom(entityClass) || int.class.isAssignableFrom(entityClass)) {
             generator = integerGenerator;
-        } else if (Date.class.isAssignableFrom(entityClass)
-                || Calendar.class.isAssignableFrom(entityClass)) {
-            generator = dateGenerator;
+        } else if (Instant.class.isAssignableFrom(entityClass)) {
+            generator = instantGenerator;
         } else if (Boolean.class.isAssignableFrom(entityClass)
                 || boolean.class.isAssignableFrom(entityClass)) {
             generator = booleanGenerator;
@@ -212,19 +211,19 @@ public class PredicateFactory {
         @SuppressWarnings({"rawtypes", "unchecked"})
         @Override
         public Predicate getPredicate(CriteriaBuilder criteriaBuilder, Filter filter, Path path) {
-            Predicate result;
-            Object val1 = filter.getValues().get(0);
-
             if (filter.getOperator() == OperationEnum.EQUAL) {
-                result = criteriaBuilder.equal(path, val1);
-            } else {
-                List<Object> args = new ArrayList<>();
-                args.add(filter.getOperator().toString());
-                args.add(filter.getColumn());
-                throw new IllegalArgumentException(
-                        "Operator " + args.get(0) + "not supported on column " + args.get(1));
+                return criteriaBuilder.equal(path, filter.getValues().get(0));
             }
-            return result;
+            if (filter.getOperator() == OperationEnum.IN) {
+                return path.in(filter.getValues());
+            }
+
+            List<Object> args = new ArrayList<>();
+            args.add(filter.getOperator().toString());
+            args.add(filter.getColumn());
+            throw new IllegalArgumentException(
+                    "Operator " + args.get(0) + "not supported on column " + args.get(1));
+
         }
     }
 
@@ -254,7 +253,7 @@ public class PredicateFactory {
                     args.add(filter.getOperator().toString());
                     args.add(filter.getColumn());
                     throw new IllegalArgumentException(
-                            "Operator " + args.get(0) + "not supported " + args.get(1)+ " for Char");
+                            "Operator " + args.get(0) + "not supported " + args.get(1) + " for Char");
             }
             return result;
         }

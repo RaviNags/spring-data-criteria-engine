@@ -12,14 +12,14 @@ public class Search {
     List<Sort> sorts;
     List<GroupedFilter> groupedFilters;
 
+    public void addGroupedFilter(GroupedFilter groupedFilter) {
+        groupedFilters.add(groupedFilter);
+    }
+
     public Search() {
         sorts = new ArrayList<>();
         groupedFilters = new ArrayList<>();
         pagination = new Pagination();
-    }
-
-    public void addGroupedFilter(GroupedFilter groupedFilter) {
-        groupedFilters.add(groupedFilter);
     }
 
     @Override

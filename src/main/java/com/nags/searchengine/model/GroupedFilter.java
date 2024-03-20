@@ -32,7 +32,7 @@ public class GroupedFilter {
 
   public void addForeignFilters(String parent, String table, Filter filter) {
     Optional<ForeignFilter> opt = this.foreignFilters.stream()
-        .filter(c -> c.getParentTableName().equals(parent) && c.getTableName().equals(table))
+        .filter(c -> (c.getParentTableName() == null || c.getParentTableName().equals(parent)) && c.getTableName().equals(table))
         .findAny();
     if (opt.isPresent())
       opt.get().getFilters().add(filter);
